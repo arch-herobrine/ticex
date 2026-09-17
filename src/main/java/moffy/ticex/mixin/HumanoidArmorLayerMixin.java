@@ -27,34 +27,20 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.armortrim.ArmorTrim;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import javax.annotation.Nullable;
 import java.util.Optional;
 
 @Mixin(HumanoidArmorLayer.class)
 public class HumanoidArmorLayerMixin {
-    @Inject(
-            method = "renderArmorPiece",
-            at = @At(value = "INVOKE", target = "Ljava/util/Optional;ifPresent(Ljava/util/function/Consumer;)V", remap = false)
-    )
-    private void setStackContext(
-            PoseStack pPoseStack,
-            MultiBufferSource pBuffer,
-            LivingEntity pLivingEntity,
-            EquipmentSlot pSlot,
-            int pPackedLight,
-            HumanoidModel<?> pModel,
-            CallbackInfo ci,
-            @Local ItemStack itemStack,
-            @Share(value = "stackContext")LocalRef<ItemStack> stackContext
-            ){
-            stackContext.set(itemStack);
-    }
 
     @Inject(method = "renderTrim(Lnet/minecraft/world/item/ArmorMaterial;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/item/armortrim/ArmorTrim;Lnet/minecraft/client/model/Model;Z)V",
             at = @At("TAIL"), remap = false)
@@ -98,7 +84,7 @@ public class HumanoidArmorLayerMixin {
                         renderContext,
                         model,
                         textureMaterial,
-                        ToolStack.from(stackContext.get()).getPersistentData(),
+                        null,
                         false
                 ), ArmorContextRenderer.RENDERER);
             }

@@ -97,8 +97,8 @@ public final class TicEXCosmicShader {
         return cosmicRenderType;
     }
 
-    public RenderType getCosmicRenderTypeArmor(ResourceLocation texture, ModDataNBT persistentData) {
-        if(persistentData.getBoolean(ModifierOmnipotence.SLAUGHTER_LOC)){
+    public RenderType getCosmicRenderTypeArmor(ResourceLocation texture, @Nullable ModDataNBT persistentData) {
+        if(persistentData != null && persistentData.getBoolean(ModifierOmnipotence.SLAUGHTER_LOC)){
             return getCosmicRenderTypeArmor(texture, hellArmorRenderTypeCache, true);
         }
         return getCosmicRenderTypeArmor(texture, cosmicArmorRenderTypeCache, false);
