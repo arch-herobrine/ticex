@@ -291,7 +291,7 @@
   "stat.ticex.catalyst_irons_spellbook": "催化剂（复兴法术书）",
   "stat.ticex.seram": "祝福的星原浆",
   "recipe.ticex.embossment_not_allowed": "待嵌入物品不符合应用条件",
-  "recipe.ticex.not_allowed_enchantment_slashblade": "不支援以下附魔：锋利，不死克星，节肢克星，燃烧，击退，掠夺，耐久，修补。",
+  "recipe.ticex.not_allowed_enchantment_slashblade": "不支援以下附魔：锋利，亡灵杀手，节肢杀手，火焰附加，击退，抢夺，耐久，经验修补",
   "recipe.ticex.not_be_witched": "以下配方需要妖刀的升级形态(含有附魔与自定名称)",
   "recipe.ticex.needed_max_level": "以下配方需要装备与书达到该附魔的最大等级。",
   "recipe.ticex.modifier.mekanic_requirements": "机械需狱髓与附魔: 强化V以应用",
